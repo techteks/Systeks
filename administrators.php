@@ -30,7 +30,7 @@
       echo '<div class="alert alert-danger text-center" role="alert">You do not have permissions to view this list.</div>';
     }else{
   ?>
-  <div class="alert alert-danger text-center" id="mensage_error" style="display:none;" role="alert"></div>
+  <div id="mensage_error"></div>
   <div class="container" style="padding-top:10px;">
     <form class="form-inline" id="form_filter_admins" action="" method="">
       <input type="text" class="form-control mr-sm-2" id="admins_key" placeholder="Key" style="margin:2px 8px 0 8px;" name="key">
@@ -50,7 +50,6 @@
         <div class="table-style">
           <div class="table-responsive">
             <table class="table table-sm table-hover">
-              <caption>Administrators</caption>
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -65,18 +64,19 @@
               <tbody id="admins_table">
                 <?php
                   require 'list/administrators-list.php';
-                ?>
+                  ?>
               </tbody>
             </table>
           </div>
+          <caption><ion-icon name="people-outline" style="font-size: 20px;"></ion-icon> Administrators</caption>
         </div>
       </div>
     </div>
   </div>
   
   <?php
-      include("templates/footer.php");
     }
+    include("templates/footer.php");
   ?>
 </body>
 </html>

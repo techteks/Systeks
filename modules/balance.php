@@ -10,14 +10,14 @@
   # Connect to data base
   require_once '../config/db_connect.php';
   # Print all list of expenses
-  $query = "SELECT amount FROM expenses ORDER BY id DESC";
+  $query = "SELECT amount FROM expenses WHERE visibility='yes' ORDER BY id DESC";
   $result = mysqli_query($dbQuery, $query) or die ("Error in the query of expenses balance -> ".mysqli_error($dbQuery));
   $amount = 0;
   while($expenses = mysqli_fetch_array($result)){
     $amount = $amount + $expenses['amount'];
   } // End while
 
-  $query = "SELECT amount FROM income ORDER BY id DESC";
+  $query = "SELECT amount FROM income WHERE visibility='yes' ORDER BY id DESC";
   $result = mysqli_query($dbQuery, $query) or die ("Error in the query of income balance -> ".mysqli_error($dbQuery));
   $amount2 = 0;
   while($income = mysqli_fetch_array($result)){

@@ -26,7 +26,7 @@
     include("templates/navbar.php");
   ?>
 
-  <div class="alert alert-danger text-center" id="mensage_error" style="display:none;" role="alert"></div>
+  <div id="mensage_error"></div>
   <div class="container" style="padding-top:40px;">
     <div class="row justify-content-center">
       <div class="col-md-6 mb-5">
@@ -64,7 +64,7 @@
                   }else{
                 ?>
                   <label>Admin type:</label>
-                  <input id="type" name="type" class="form-control" value="Regular" disabled>
+                  <input id="type" name="type" class="form-control" value="Regular" readonly>
                   </select>
                   <small class="error" id="type_error"></small>
                 <?php

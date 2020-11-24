@@ -39,7 +39,7 @@
     </div>
   </nav>
 
-  <div class="alert alert-danger text-center" id="mensage_error" style="display:none;" role="alert"></div>
+  <div id="mensage_error"></div>
 
   <div class="padding-topbottom">
     <div class="container">

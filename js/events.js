@@ -5,6 +5,10 @@
   @author Alejandro Quezada
   @version v1.0.0
 =========================================*/
+error_mensaje = $('#mensage_error');
+danger_mensaje = '<div class="alert alert-danger text-center" role="alert">';
+success_mensaje = '<div class="alert alert-success text-center" role="alert">';
+close_button = '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
 /*==============================
           LOGIN FORM
 ===============================*/
@@ -20,11 +24,9 @@ $('#send_login').on('click', function(e){
   // Condition to validate the result variable
   if(result){
     $('#send_login').val("Login");
-    $('#mensage_error').css('display','none').html();
     // LET PASS
   }else{
     $('#send_login').val("Login");
-    $('#mensage_error').css('display','none').html();
     return false;
   }
   $.ajax({
@@ -41,7 +43,7 @@ $('#send_login').on('click', function(e){
       }else{
         $('#send_login').val("Login");
         $('#login_form').trigger("reset");
-        $('#mensage_error').css('display','block').html(res+'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>');
+        error_mensaje.html(danger_mensaje+res+close_button);
       }
     }
   });
@@ -70,12 +72,13 @@ $('#send_registry').on('click', function(e){
   if(result){
     $('html,body').animate({scrollTop:$('body').offset().top - 250},1500);
     $('#send_registry').val("Registry");
-    $('#mensage_error').css('display','none').html();
+    error_mensaje.html("");
     // LET PASS
   }else{
+    error_mensaje.html("");
+    error_mensaje.html(danger_mensaje+'Error, the form is incomplete or have a invalid value.'+close_button);
     $('html,body').animate({scrollTop:$('body').offset().top - 250},1500);
     $('#send_registry').val("Registry");
-    $('#mensage_error').css('display','none').html();
     return false;
   }
   $.ajax({
@@ -87,7 +90,7 @@ $('#send_registry').on('click', function(e){
     },
     success: function(res){
       if(res === ""){
-        $('#mensage_error').removeClass('alert-danger').addClass('alert-success').css('display','block').html("Successful registration");
+        error_mensaje.html(success_mensaje+"Successful registration"+close_button);
         $('#send_registry').val("Registry");
         $('#registry_form').trigger("reset");
         // LET PASS
@@ -96,19 +99,19 @@ $('#send_registry').on('click', function(e){
         mensage_split.forEach(element => {
           if(element === "'username'"){
             $('#send_registry').val("Registry");
-            $('#mensage_error').css('display','none').html();
+            error_mensaje.html("");
             $('#username_error').html("Username is already use.");
-            $('#mensage_error').removeClass('alert-success').addClass('alert-danger').css('display','block').html(`Error the username is already use.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
+            error_mensaje.html(danger_mensaje+'Error the username is already use.'+close_button);
             return false;
           }else if(element === "'email'"){
             $('#send_registry').val("Registry");
-            $('#mensage_error').css('display','none').html();
+            error_mensaje.html("");
             $('#email_error').html("Email is already use.");
-            $('#mensage_error').removeClass('alert-success').addClass('alert-danger').css('display','block').html(`Error the email is already use.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
+            error_mensaje.html(danger_mensaje+'Error the email is already use.'+close_button);
             return false;
           }else{
             $('#send_registry').val("Registry");
-            $('#mensage_error').removeClass('alert-success').addClass('alert-danger').css('display','block').html(res);
+            error_mensaje.removeClass('alert-success').addClass('alert-danger').css('display','block').html(res);
             return false;
           }
         });
@@ -125,10 +128,10 @@ $('#filter_button').on('click', function(e){
   result = true;
   var admins_filter = $('#admins_filter').val();
   var admins_key = $('#admins_key').val().toLowerCase();
-  validateAdminsFilter(admins_filter, admins_key);
+  validateAdminsFilter(admins_filter, admins_key, error_mensaje, danger_mensaje, close_button);
   if(result){
     $('html,body').animate({scrollTop:$('body').offset().top - 250},1500);
-    $('#mensage_error').css('display','none').html("");
+    error_mensaje.html("");
     // LET PASS
   }else{
     $('html,body').animate({scrollTop:$('body').offset().top - 250},1500);
@@ -140,7 +143,7 @@ $('#filter_button').on('click', function(e){
     data: $('#form_filter_admins').serialize(),
     success: function(res){
       if(res==""){
-        $('#mensage_error').css('display','block').html(`No results were found.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
+        error_mensaje.html(danger_mensaje+"No results were found."+close_button);
       }else{
         $('#admins_table').html(res);
       }
@@ -170,7 +173,7 @@ $('#registry_acount').on('click', function(e){
 
   if(result){
     $('html,body').animate({scrollTop:$('body').offset().top - 250},1500);
-    $('#mensage_error').css('display','none').html("");
+    error_mensaje.html("");
     // LET PASS
   }else{
     $('html,body').animate({scrollTop:$('body').offset().top - 250},1500);
@@ -183,10 +186,10 @@ $('#registry_acount').on('click', function(e){
       data: $('#acount_form').serialize(),
       success: function(res){
         if(res==""){
-          $('#mensage_error').removeClass('alert-success').addClass('alert-danger').css('display','block').html(`Error trying to save the income.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
+          error_mensaje.html(danger_mensaje+"Error trying to save the income."+close_button);
         }else{
           $('#acount_form').trigger("reset");
-          $('#mensage_error').removeClass('alert-danger').addClass('alert-success').css('display','block').html(`Successful income registration<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
+          error_mensaje.html(success_mensaje+"Successful income registration"+close_button);
           $('#income_table').html(res);
           $.post("modules/balance.php", function(res){
             $('#balance').html(res);
@@ -201,10 +204,10 @@ $('#registry_acount').on('click', function(e){
       data: $('#acount_form').serialize(),
       success: function(res){
         if(res==""){
-          $('#mensage_error').removeClass('alert-success').addClass('alert-danger').css('display','block').html(`Error trying to save the expenses.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
+          error_mensaje.html(danger_mensaje+"Error trying to save the expenses"+close_button);
         }else{
           $('#acount_form').trigger("reset");
-          $('#mensage_error').removeClass('alert-danger').addClass('alert-success').css('display','block').html(`Successful expenses registration<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
+          error_mensaje.html(success_mensaje+"Successful expenses registration"+close_button);
           $('#expenses_table').html(res);
           $.post("modules/balance.php", function(res){
             $('#balance').html(res);
@@ -213,7 +216,7 @@ $('#registry_acount').on('click', function(e){
       }
     });
   }else{
-    $('#mensage_error').removeClass('alert-success').addClass('alert-danger').css('display','block').html(`Error trying to save the acount.<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>`);
+    error_mensaje.html(danger_mensaje+"Error trying to save the acount"+close_button);
   }
 });
 /*======================================
@@ -235,7 +238,69 @@ $('#edit').on('click', function(e){
 /*======================================
     Event to send edit admin acount
 ========================================*/
-$('#send_edit').on('click', function(e){
+/*$('#send_edit').on('click', function(e){
   e.preventDefault();
   e.stopImmediatePropagation();
+});*/
+/*======================================
+    Event to see income information
+========================================*/
+$('#income_table').on('click','tr', function(e){
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  target = $(this).attr('id');
+  $.ajax({
+    url: "modules/income-information.php",
+    type: "POST",
+    data: {id:target},
+    success: function(res){
+      $('body').css('overflow-y','hidden');
+      $('#overlay').css('visibility', 'visible');
+      $('#view_information_income_expenses').html(res);
+    }
+  });
+});
+/*======================================
+    Event to see expense information
+========================================*/
+$('#expenses_table').on('click','tr', function(e){
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  var target = $(this).attr('id');
+  $.ajax({
+    url: "modules/expenses-information.php",
+    type: "POST",
+    data: {id:target},
+    success: function(res){
+      $('body').css('overflow-y','hidden');
+      $('#overlay').css('visibility', 'visible');
+      $('#view_information_income_expenses').html(res);
+    }
+  });
+});
+/*======================================
+    Event to see expense information
+========================================*/
+$('#delete_expenses').on('click','button', function(e){
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  var target = $(this).attr('id');
+  console.log(target);
+  /*$.ajax({
+    url: "modules/delete_expenses-information.php",
+    type: "POST",
+    data: {id:target},
+    success: function(res){
+      $('body').css('overflow-y','hidden');
+      $('#overlay').css('visibility', 'visible');
+      $('#view_information_income_expenses').html(res);
+    }
+  });*/
+});
+/*===================================================
+Close the card of income and expenses information
+=====================================================*/
+$('#close').on('click', function(){
+  $('body').css('overflow-y','scroll');
+  $('#overlay').css('visibility', 'hidden');
 });

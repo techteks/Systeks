@@ -37,27 +37,21 @@
                 <input type="text" id="email" name="email" class="form-control" value="'.$admins['email'].'">
                 <small class="error" id="email_error"></small>
               </div>
-              <div class="form-group">
-                <?php
-                  if($_SESSION['.'.type.'.'] == "principal"){
-                ?>
-                  <label>Admin type:</label>
+              <div class="form-group">';
+        if($admins['user_type'] == "principal"){
+          echo '<label>Admin type:</label>
                   <select id="type" name="type" class="form-control">
                     <option value="principal">Principal</option>
                     <option value="regular">Regular</option>
                   </select>
-                  <small class="error" id="type_error"></small>
-                <?php
-                  }else{
-                ?>
-                  <label>Admin type:</label>
+                  <small class="error" id="type_error"></small>';
+        }else{
+          echo '<label>Admin type:</label>
                   <input id="type" name="type" class="form-control" value="Regular" disabled>
                   </select>
-                  <small class="error" id="type_error"></small>
-                <?php
-                  }
-                ?>
-              </div>
+                  <small class="error" id="type_error"></small>';
+        }
+        echo '</div>
               <div class="form-group">
                 <label>Password:</label>
                 <input type="password" id="password" name="password" class="form-control">
@@ -69,7 +63,7 @@
                 <small class="error" id="confirm_password_error"></small>
               </div>
               <div class="form-group">
-                <label>Enter your last password:</label>
+                <label>Enter your last password to confirm changes:</label>
                 <input type="password" id="last_password" name="last_password" class="form-control" placeholder="Enter your last password">
                 <small class="error" id="last_password_error"></small>
               </div>

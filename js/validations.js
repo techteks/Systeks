@@ -232,11 +232,16 @@ function validateConfirmPassword(password, confirm_password){
 /*================================
       VALIDATE ADMIN FILTER
 ==================================*/
-function validateAdminsFilter(admins_filter, admins_key){
+function validateAdminsFilter(admins_filter, admins_key, error_mensaje, danger_mensaje, close_button){
+
   this.admins_filter = admins_filter;
   this.admins_key = admins_key;
+  this.error_mensaje = error_mensaje;
+  this.danger_mensaje = danger_mensaje;
+  this.close_button = close_button;
+
   if(this.admins_filter!="0"&&this.admins_filter!="1"&&this.admins_filter!="2"&&this.admins_filter!="3"){
-    $('#mensage_error').css('display','block').html("The filter option is invalid.");
+    this.error_mensaje.html(danger_mensaje+"The filter option is invalid."+close_button);
     result = false;
     return false;
   }
@@ -248,7 +253,7 @@ function validateAdminsFilter(admins_filter, admins_key){
       split_admins_key.forEach(element => {
         reserved_words.forEach(element2 => {
           if(element === element2){
-            $('#mensage_error').css('display','block').html("The key is invalid.");
+            this.error_mensaje.html(danger_mensaje+"The key is invalid."+close_button);
             result = false;
             return false;
           }
@@ -258,7 +263,7 @@ function validateAdminsFilter(admins_filter, admins_key){
         for(j=0;j<this.admins_key.length;j++){
           var admins_key_characters = this.admins_key.charAt(j);
           if(admins_key_characters === element3){
-            $('#mensage_error').css('display','block').html("The key is invalid.");
+            this.error_mensaje.html(danger_mensaje+"The key is invalid."+close_button);
             result = false;
             return false;
           }
@@ -267,13 +272,13 @@ function validateAdminsFilter(admins_filter, admins_key){
     }
   }else if(this.admins_filter=="1"){
     validateUsername(this.admins_key);
-    $('#mensage_error').css('display','block').html("Username invalid.");
+    this.error_mensaje.html(danger_mensaje+"Username invalid."+close_button);
   }else if(this.admins_filter=="2"){
     validateAdminType(this.admins_key);
-    $('#mensage_error').css('display','block').html("Admin type invalid.");
+    this.error_mensaje.html(danger_mensaje+"Admin type invalid."+close_button);
   }else if(this.admins_filter=="3"){
     validateEmail(this.admins_key);
-    $('#mensage_error').css('display','block').html("Email invalid.");
+    this.error_mensaje.html(danger_mensaje+"Email invalid."+close_button);
   }else{
     // LET PASS
   }

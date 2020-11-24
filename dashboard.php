@@ -9,6 +9,7 @@
   session_start();
   # Connect to data base
   require_once 'config/db_connect.php';
+  require_once 'modules/functions.php';
 
   if(!isset($_SESSION['type'])){
     header('Location: login.php');
@@ -27,7 +28,7 @@
   <?php
     include("templates/navbar.php");
   ?>
-  <div class="alert alert-danger alert-dismissible fade show" id="mensage_error" style="text-align: center;display:none;" role="alert"></div>
+  <div id="mensage_error"></div>
   <div class="container">
     <div id="balance">
       <h3>BALANCE: </h3>
@@ -48,7 +49,6 @@
                   <th scope="col">Name</th>
                   <th scope="col">Date</th>
                   <th scope="col">Total</th>
-                  <th scope="col">Action</th>
                 </tr>
 
               </thead>
@@ -77,7 +77,6 @@
                   <th scope="col">Name</th>
                   <th scope="col">Date</th>
                   <th scope="col">Total</th>
-                  <th scope="col">Action</th>
                 </tr>
 
               </thead>
@@ -127,6 +126,15 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><h6 style="float:left;">Details</h6><i style="float:right;" id="close" class="lni lni-close hover-pointer"></i></li>
+      </ul>
+      <ul class="list-group list-group-flush" id="view_information_income_expenses"></ul>
+    </div>';
   </div>
   
   <?php
