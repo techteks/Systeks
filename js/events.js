@@ -278,9 +278,9 @@ $('#expenses_table').on('click','tr', function(e){
     }
   });
 });
-/*======================================
-    Event to see expense information
-========================================*/
+/*=====================================
+  Event to delete expense information
+=======================================*/
 $('#delete_expenses').on('click','button', function(e){
   e.preventDefault();
   e.stopImmediatePropagation();
@@ -298,7 +298,7 @@ $('#delete_expenses').on('click','button', function(e){
   });*/
 });
 /*===================================================
-Close the card of income and expenses information
+  Close the card of income and expenses information
 =====================================================*/
 $('#close').on('click', function(){
   $('body').css('overflow-y','scroll');

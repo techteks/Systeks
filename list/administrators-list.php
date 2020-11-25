@@ -11,7 +11,7 @@
   $result = mysqli_query($dbQuery, $query) or die ("Error in the query of administrators -> ".mysqli_error($dbQuery));
   
   while($admins = mysqli_fetch_array($result)){
-    if($admins['username'] == $_SESSION['username']){
+    if($admins['username'] == $_SESSION[ADMIN_USERNAME]){
       echo '<tr>
               <td><strong>'.$admins['id'].'</strong></td>
               <td>'.$admins['username'].'</td>

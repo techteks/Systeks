@@ -7,7 +7,7 @@
   # @version v1.0.0
   #*****************************************
   # Print all list of expenses
-  if(isset($_SESSION['type'])){
+  if(isset($_SESSION[ADMIN_TYPE])){
     $list = 'expenses';
-    print_list($list);
+    print_list($dbQuery, $list);
   }

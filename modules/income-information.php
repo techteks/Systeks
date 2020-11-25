@@ -14,7 +14,7 @@
   if(isset($_POST['id'])){
     $id = $_POST['id'];
     $list = 'income';
-    delete_income_expenses($list, $id);
+    view_income_expenses($dbQuery, $list, $id);
   }else{
     echo 'No';
   }

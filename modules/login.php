@@ -22,10 +22,10 @@
       # Verify if the password of user is equals the password entered
       if(password_verify($password, $admins['password'])){
         # We assign session variables
-        $_SESSION['id'] = $admins['id'];
-        $_SESSION['username'] = $admins['username'];
-        $_SESSION['name'] = $admins['full_name'];
-        $_SESSION['type'] = $admins['user_type'];
+        $_SESSION[ADMIN_ID] = $admins['id'];
+        $_SESSION[ADMIN_USERNAME] = $admins['username'];
+        $_SESSION[ADMIN_NAME] = $admins['full_name'];
+        $_SESSION[ADMIN_TYPE] = $admins['user_type'];
       }else{
         echo 'Username or password invalid!';
       }

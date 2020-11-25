@@ -7,7 +7,7 @@
   # @version v1.0.0
   #*****************************************
 
-  $query = "SELECT * FROM admins WHERE username='".$_SESSION['username']."'";
+  $query = "SELECT * FROM admins WHERE username='".$_SESSION[ADMIN_USERNAME]."'";
   $result = mysqli_query($dbQuery, $query) or die ("Error in the query for show admin information -> ".mysqli_error($dbQuery));
   $admins = mysqli_fetch_array($result);
   

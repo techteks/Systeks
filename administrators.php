@@ -10,7 +10,7 @@
   # Connect to data base
   require_once 'config/db_connect.php';
 
-  if(!isset($_SESSION['type'])){
+  if(!isset($_SESSION[ADMIN_TYPE])){
     header('Location: login.php');
   }
 ?>
@@ -26,7 +26,7 @@
 
   <?php
     include("templates/navbar.php");
-    if($_SESSION['type'] != 'principal'){
+    if($_SESSION[ADMIN_TYPE] != 'principal'){
       echo '<div class="alert alert-danger text-center" role="alert">You do not have permissions to view this list.</div>';
     }else{
   ?>

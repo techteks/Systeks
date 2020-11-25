@@ -11,7 +11,7 @@
   require_once 'config/db_connect.php';
   require_once 'modules/functions.php';
 
-  if(!isset($_SESSION['type'])){
+  if(!isset($_SESSION[ADMIN_TYPE])){
     header('Location: login.php');
   }else{
 ?>

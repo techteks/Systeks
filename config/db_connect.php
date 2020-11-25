@@ -6,6 +6,12 @@
   # @author Alejandro Quezada
   # @version v1.0.0
   #*****************************************
+  # Constants of authentication for the login session
+  DEFINE('ADMIN_ID','ADMIN_ID');
+  DEFINE('ADMIN_USERNAME','ADMIN_USERNAME');
+  DEFINE('ADMIN_NAME','ADMIN_NAME');
+  DEFINE('ADMIN_TYPE', 'ADMIN_TYPE');
+  # Constants for the database connection
   DEFINE('HOST','localhost');
   DEFINE('USER','root');
   DEFINE('PASS','root');

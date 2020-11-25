@@ -8,10 +8,10 @@
   #*****************************************
 
   session_start();
-  unset($_SESSION['id']);
-  unset($_SESIION['username']);
-  unset($_SESSION['name']);
-  unset($_SESSION['type']);
+  unset($_SESSION[ADMIN_ID]);
+  unset($_SESIION[ADMIN_USERNAME]);
+  unset($_SESSION[ADMIN_NAME]);
+  unset($_SESSION[ADMIN_TYPE]);
   session_destroy();
   header("Location: ../index.php");
   exit;

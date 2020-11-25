@@ -31,7 +31,7 @@
             <ion-icon name="settings-sharp"></ion-icon> Support</a>
           </li>
           <li class="nav-item dropdown pad-lr-5 hover-bb">
-            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><ion-icon name="person-sharp"></ion-icon><?php echo ' '.$_SESSION['username']; ?></a>
+            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><ion-icon name="person-sharp"></ion-icon><?php echo ' '.$_SESSION[ADMIN_USERNAME]; ?></a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" id="admin_acount" href=""><ion-icon name="person-circle"></ion-icon> Admin accont</a>                       
               <a class="dropdown-item" href="admin-registry.php"><ion-icon name="person-add"></ion-icon> New admin accont</a>                       

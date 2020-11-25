@@ -10,7 +10,7 @@
   # Databases conection
   require_once '../config/db_connect.php';
   
-  $query = "SELECT * FROM admins WHERE username='".$_SESSION['username']."'";
+  $query = "SELECT * FROM admins WHERE username='".$_SESSION[ADMIN_USERNAME]."'";
   $result = mysqli_query($dbQuery, $query) or die ("Error in the query for show admin information -> ".mysqli_error($dbQuery));
   $admins = mysqli_fetch_array($result);
   
@@ -67,7 +67,7 @@
                 <input type="password" id="last_password" name="last_password" class="form-control" placeholder="Enter your last password">
                 <small class="error" id="last_password_error"></small>
               </div>
-              <input type="submit" id="send_edit" class="btn btn-success py-2 px-5" value="Edit">
+              <input type="submit" id="send_edit" class="btn btn-success py-2 px-5" value="Save changes">
             </form>
           </div>
         </div>
