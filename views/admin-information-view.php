@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group">
                   <label>Admin type:</label>
-                  <input type="text" class="form-control" value="'.$admins['user_type'].'" disabled>
+                  <input type="text" class="form-control" value="'.$admins['type'].'" disabled>
                 </div>
                 <input type="button" id="edit" class="btn btn-success py-2 px-5" value="Edit">
               </form>

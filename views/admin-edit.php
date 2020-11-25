@@ -38,18 +38,26 @@
                 <small class="error" id="email_error"></small>
               </div>
               <div class="form-group">';
-        if($admins['user_type'] == "principal"){
-          echo '<label>Admin type:</label>
-                  <select id="type" name="type" class="form-control">
-                    <option value="principal">Principal</option>
-                    <option value="regular">Regular</option>
-                  </select>
-                  <small class="error" id="type_error"></small>';
+        if($_SESSION[ADMIN_TYPE] == "principal"){
+          echo '
+            <label>Admin type:</label>
+              <select id="type" name="type" class="form-control">
+                <option value="principal">Principal</option>
+                <option value="regular">Regular</option>
+              </select>
+              <small class="error" id="type_error"></small>';
+        }elseif($_SESSION[ADMIN_TYPE] == "regular"){
+          echo '
+            <label>Admin type:</label>
+              <input id="type" name="type" class="form-control" value="Regular" readonly>
+              </select>
+              <small class="error" id="type_error"></small>';
         }else{
-          echo '<label>Admin type:</label>
-                  <input id="type" name="type" class="form-control" value="Regular" disabled>
-                  </select>
-                  <small class="error" id="type_error"></small>';
+          echo '
+            <label>Admin type:</label>
+              <input id="type" name="type" class="form-control" value="NULL" readonly>
+              </select>
+              <small class="error" id="type_error"></small>';
         }
         echo '</div>
               <div class="form-group">
