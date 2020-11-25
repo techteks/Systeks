@@ -13,7 +13,7 @@
 
   if(isset($_POST['id'])){
     $id = $_POST['id'];
-    $list = 'income';
+    $list = 'incomes';
     view_income_expenses($dbQuery, $list, $id);
   }else{
     echo 'No';

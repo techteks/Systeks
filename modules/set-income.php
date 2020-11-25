@@ -23,10 +23,10 @@ if(isset($_POST['name'])){
     $description = $_POST['description'];
     $amount = $_POST['amount'];
 
-    $query = "INSERT INTO income (name, description, amount, by_username, date, date_time, visibility) VALUES('".$name."','".$description."','".$amount."','".$_SESSION[ADMIN_USERNAME]."', CURDATE(), NOW(),'yes')";
+    $query = "INSERT INTO incomes (name, description, amount, by_username, date, time, visibility) VALUES('".$name."','".$description."','".$amount."','".$_SESSION[ADMIN_USERNAME]."', CURDATE(), CURTIME(),'yes')";
     $result = mysqli_query($dbQuery, $query) or die ("Error in the query of insert a income -> ".mysqli_error($dbQuery));
 
     # Print all list of income
-    $list = 'income';
-    print_list($list);
+    $list = 'incomes';
+    print_list($dbQuery, $list);
   }

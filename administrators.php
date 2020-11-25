@@ -57,7 +57,6 @@
                   <th scope="col">Full name</th>
                   <th scope="col">Email</th>
                   <th scope="col">Type</th>
-                  <th scope="col">Action</th>
                 </tr>
               </thead>
 

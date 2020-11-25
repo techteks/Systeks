@@ -179,7 +179,7 @@ $('#registry_acount').on('click', function(e){
     $('html,body').animate({scrollTop:$('body').offset().top - 250},1500);
     return false;
   }
-  if(type=="income"){
+  if(type=="incomes"){
     $.ajax({
       url: 'modules/set-income.php',
       type: 'POST',

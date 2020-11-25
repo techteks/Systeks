@@ -338,7 +338,7 @@ function validateCompanyName(name,name_error){
 function validateTypeAcount(type, type_error){
   this.type = type;
   this.type_error = type_error;
-  if(this.type!="income"&&this.type!="expenses"){
+  if(this.type!="incomes"&&this.type!="expenses"){
     this.type_error.html("This option is invalid.");
     result = false;
     return false;

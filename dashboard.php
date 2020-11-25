@@ -105,8 +105,8 @@
               <div class="form-group">
                 <label>What is?</label>
                 <select id="type" name="type" class="form-control">
-                  <option value="income">Income</option>
-                  <option value="expenses">Expenses</option>
+                  <option value="incomes">Income</option>
+                  <option value="expenses">Expense</option>
                 </select>
                 <small class="error" id="type_error"></small>
               </div>

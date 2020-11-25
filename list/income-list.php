@@ -7,6 +7,6 @@
   # @version v1.0.0
   #*****************************************
   if(isset($_SESSION[ADMIN_TYPE])){
-    $list = 'income';
+    $list = 'incomes';
     print_list($dbQuery, $list);
   }

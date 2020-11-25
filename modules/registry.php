@@ -14,13 +14,13 @@
     $username = $_POST['username'];
     $full_name = $_POST['full_name'];
     $email = $_POST['email'];
-    $admin_type = $_POST['type'];
+    $type = $_POST['type'];
     $password = $_POST['password'];
 
     # Encrypt the password
     $password_hashed = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO admins (username, full_name, email, user_type, password) VALUES('".$username."','".$full_name."','".$email."','".$admin_type."','".$password_hashed."')";
+    $query = "INSERT INTO admins (username, full_name, email, type, password) VALUES('".$username."','".$full_name."','".$email."','".$type."','".$password_hashed."')";
     $query2 = mysqli_query($dbQuery, $query) or die ("Error in the query of registry ->".mysqli_error($dbQuery));
     if($query2){
       // LET PASS

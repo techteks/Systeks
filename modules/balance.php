@@ -17,7 +17,7 @@
     $amount = $amount + $expenses['amount'];
   } // End while
 
-  $query = "SELECT amount FROM income WHERE visibility='yes' ORDER BY id DESC";
+  $query = "SELECT amount FROM incomes WHERE visibility='yes' ORDER BY id DESC";
   $result = mysqli_query($dbQuery, $query) or die ("Error in the query of income balance -> ".mysqli_error($dbQuery));
   $amount2 = 0;
   while($income = mysqli_fetch_array($result)){

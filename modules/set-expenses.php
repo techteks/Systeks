@@ -17,9 +17,9 @@
     $description = $_POST['description'];
     $amount = $_POST['amount'];
 
-    $query = "INSERT INTO expenses (name, description, amount, by_username, date, date_time, visibility) VALUES('".$name."','".$description."','".$amount."','".$_SESSION[ADMIN_USERNAME]."', CURDATE(), NOW(),'yes')";
+    $query = "INSERT INTO expenses (name, description, amount, by_username, date, time, visibility) VALUES('".$name."','".$description."','".$amount."','".$_SESSION[ADMIN_USERNAME]."', CURDATE(), CURTIME(),'yes')";
     $result = mysqli_query($dbQuery, $query) or die ("Error in the query of insert a expenses -> ".mysqli_error($dbQuery));
     #Print expenses list
     $list = 'expenses';
-    print_list($list);
+    print_list($dbQuery, $list);
   }

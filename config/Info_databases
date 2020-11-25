@@ -1,0 +1,17 @@
+Admins table
+id int(2) not null primary key unique auto_increment
+username varchar(15) not null unique
+full_name varchar(35) not null
+email varchar(50) not null unique
+type varchar(10) not null
+password varchar(255) not null
+
+income and expenses table
+id int(11) not null primary key unique auto_increment
+name varchar(50) not null
+description varchar(100) not null
+amount float not null
+by_username varchar(15) not null
+date date not null
+time time not null
+visibility varchar(5) not null
